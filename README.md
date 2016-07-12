@@ -6,7 +6,7 @@
 Linear interpolation for viewport points.
 
 It renders a group of viewport breakpoints like `[320, 768]` and pixel points `[16, 18]` into lines
-in the format of `calc(Xvw + Ypx) + Zpx` to be used in responsive css styling, like font sizes.
+in the format of `calc(Xvw + Ypx)` to be used in responsive css styling, like font sizes.
 
 Based on :
 - http://descomplica.github.io/css-size-calculator/
