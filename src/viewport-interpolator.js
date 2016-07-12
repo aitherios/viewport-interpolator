@@ -1,33 +1,35 @@
 const viewportInterpolator = (...points) => (viewportWidth) => {
-  const viewportWidths = []
-  const sizes = []
-  points.forEach((point) => {
-    viewportWidths.push(point[0])
-    sizes.push(point[1])
+  let interpolations = points.reduce((prev, current, index) => {
+    let array
+
+    if (!Array.isArray(prev[0])) {
+      array = [prev]
+    } else {
+      array = prev
+    }
+
+    const last = array[array.length - 1]
+    const slope = (current[1] - last[1]) / (current[0] - last[0])
+    const intercept = (current[0] * last[1] - last[0] * current[1]) / (current[0] - last[0])
+    const interpolation = `calc(${slope * 100}vw + ${intercept}px)`
+
+    last.push(interpolation)
+    array.push(current)
+
+    if (points.length - 1 === index) {
+      current.push(interpolation)
+    }
+
+    return array
   })
 
-  const values = []
-
-  for (var i = 0; i < viewportWidths.length-1; i++) {
-    var x1 = viewportWidths[i]
-    var x2 = viewportWidths[i+1]
-
-    var y1 = sizes[i]
-    var y2 = sizes[i+1]
-
-    var a = (y2-y1) / (x2-x1)
-    var b = (x2*y1 - x1*y2) / (x2 - x1)
-
-    values.push(`calc(${a * 100}vw + ${b}px)`)
+  if (interpolations[0][0] !== 0) {
+    interpolations = [[0, 0, interpolations[0][2]], ...interpolations]
   }
 
-  for (var i = 0; i < viewportWidths.length-1; i++) {
-    if (viewportWidth < viewportWidths[i]) {
-      return values[i-1]
-    }
-  }
+  interpolations = interpolations.filter((interpolation) => interpolation[0] <= viewportWidth)
 
-  return values
+  return interpolations[interpolations.length - 1][2]
 }
 
 export default viewportInterpolator
