@@ -17,7 +17,7 @@ Based on :
 Let's create an interpolator for font sizes. For the following breakpoints: `320, 768, 1360` we want
 `16, 18, 22` px font sizes.
 
-First we create the interpolator:
+First, create the interpolator:
 
 ```js
 import viewportInterpolator from 'viewport-interpolator'
@@ -25,7 +25,7 @@ import viewportInterpolator from 'viewport-interpolator'
 const interpolator = viewportInterpolator([320, 16], [768, 18], [1360, 22])
 ```
 
-And we call it with the current screen width to get the correct value:
+And call it with the current screen width to get the correct value:
 
 ```js
 interpolator(320)  // returns "calc(0.4464285714285714vw + 14.571428571428571px)" i.e. 16px on 320px screen width
@@ -34,7 +34,7 @@ interpolator(1360) // returns "calc(1.4285714285714286vw + 2.5714285714285716px)
 interpolator(1500) // returns "calc(1.4285714285714286vw + 2.5714285714285716px)" i.e. 24px on 1500px screen width
 ```
 
-Or you can call it like:
+Or call it like:
 
 ```js
 const myFontSize = interpolator(window.innerWidth)
