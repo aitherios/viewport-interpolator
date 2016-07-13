@@ -47,3 +47,13 @@ describe('viewportInterpolator(...) with ordered points', () => {
     expect(subject(2000)).toBe('calc(1.4285714285714286vw + 2.5714285714285716px)')
   })
 })
+
+describe('viewportInterpolator(...) with unordered duplicated points', () => {
+  beforeEach(() => {
+    subject = viewportInterpolator([1360, 22], [1360, 22], [320, 16], [768, 18], [1920, 30])
+  })
+
+  it('interpolates for 1360', () => {
+    expect(subject(1360)).toBe('calc(1.4285714285714286vw + 2.5714285714285716px)')
+  })
+})

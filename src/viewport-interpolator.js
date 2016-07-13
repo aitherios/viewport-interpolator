@@ -1,5 +1,13 @@
 const viewportInterpolator = (...points) => (viewportWidth) => {
-  let interpolations = points.reduce((prev, current, index) => {
+  // sort
+  let interpolationPoints = points.sort((a, b) => {
+    if (a[0] < b[0]) { return -1 }
+    if (a[0] > b[0]) { return 1 }
+    return 0
+  })
+
+  // create interpolation values
+  interpolationPoints = interpolationPoints.reduce((prev, current, index) => {
     let array
 
     if (!Array.isArray(prev[0])) {
@@ -16,20 +24,25 @@ const viewportInterpolator = (...points) => (viewportWidth) => {
     last.push(interpolation)
     array.push(current)
 
-    if (points.length - 1 === index) {
+    if (interpolationPoints.length - 1 === index) {
       current.push(interpolation)
     }
 
     return array
   })
 
-  if (interpolations[0][0] !== 0) {
-    interpolations = [[0, 0, interpolations[0][2]], ...interpolations]
+  // add viewport width 0 point
+  if (interpolationPoints[0][0] !== 0) {
+    interpolationPoints = [[0, 0, interpolationPoints[0][2]], ...interpolationPoints]
   }
 
-  interpolations = interpolations.filter((interpolation) => interpolation[0] <= viewportWidth)
+  // remove points greater then viewport
+  interpolationPoints = interpolationPoints.filter(
+    (interpolation) => interpolation[0] <= viewportWidth
+  )
 
-  return interpolations[interpolations.length - 1][2]
+  // return last remaining point
+  return interpolationPoints[interpolationPoints.length - 1][2]
 }
 
 export default viewportInterpolator
