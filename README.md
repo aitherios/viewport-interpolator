@@ -1,7 +1,7 @@
 # viewport-interpolator
 [![npm version](https://img.shields.io/npm/v/viewport-interpolator.svg?style=flat-square)](https://www.npmjs.com/package/viewport-interpolator)
-[![dependency status](https://img.shields.io/david/team-magneto/viewport-interpolator.svg?style=flat-square)](https://david-dm.org/team-magneto/viewport-interpolator)
-[![build status](https://img.shields.io/travis/team-magneto/viewport-interpolator.svg?style=flat-square)](https://travis-ci.org/team-magneto/viewport-interpolator)
+[![dependency status](https://img.shields.io/david/team-767/viewport-interpolator.svg?style=flat-square)](https://david-dm.org/team-767/viewport-interpolator)
+[![build status](https://img.shields.io/travis/team-767/viewport-interpolator.svg?style=flat-square)](https://travis-ci.org/team-767/viewport-interpolator)
 
 Linear interpolation for viewport points.
 

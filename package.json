@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/team-magneto/viewport-interpolator.git"
+    "url": "git+ssh://git@github.com/team-767/viewport-interpolator.git"
   },
   "keywords": [
     "viewport-interpolator",
@@ -23,9 +23,9 @@
   "author": "Team Magneto",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/team-magneto/viewport-interpolator/issues"
+    "url": "https://github.com/team-767/viewport-interpolator/issues"
   },
-  "homepage": "https://github.com/team-magneto/viewport-interpolator#readme",
+  "homepage": "https://github.com/team-767/viewport-interpolator#readme",
   "dependencies": {
   },
   "devDependencies": {
